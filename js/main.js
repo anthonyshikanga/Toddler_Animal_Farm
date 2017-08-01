@@ -20,6 +20,17 @@ var GameState = {
 
    this.background = this.game.add.sprite(0, 0, 'background');
 
+   var animalData = [
+    {key: 'chicken', text: 'CHICKEN'},
+    {key: 'horse', text: 'HORSE'},
+    {key: 'pig', text: 'PIG'},
+    {key 'sheep', text: 'SHEEP'},
+];
+
+   this.animals = this.game.add.group();
+
+   var self = this;
+
    this.chicken = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'chicken');
    this.chicken.anchor.setTo(0.5);
   
