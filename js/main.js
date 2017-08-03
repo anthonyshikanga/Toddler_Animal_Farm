@@ -84,7 +84,21 @@ var GameState = {
 
   },
   switchAnimal: function(sprite, event) {
-   console.log('move animal');
+   var newAnimal, endX;
+
+   if(sprite.customParams.direction > 0){
+     newAnimal = this.animals.next();
+     newAnimal.x = -newAnimal.width/2;
+     endX = 640 + this.currentAnimal.width/2;
+}
+   else {
+     newAnimal = this.animals.previous();
+     newAnimal.x = 640 + newAnimal.width/2;
+     endX = -this.currentAnimal.width/2;
+}
+
+var newAnimalMovement = game.add.tween(newAnimal);
+newAnimalMovement.to({x: this.game.world.centerX})
 },
   animateAnimal: function(sprite, event){
    console.log('animate animal');
