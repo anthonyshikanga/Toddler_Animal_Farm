@@ -84,6 +84,7 @@ var GameState = {
 
   },
   switchAnimal: function(sprite, event) {
+
    var newAnimal, endX;
 
    if(sprite.customParams.direction > 0){
@@ -98,15 +99,23 @@ var GameState = {
 }
 
 var newAnimalMovement = game.add.tween(newAnimal);
-newAnimalMovement.to({x: this.game.world.centerX})
-},
-  animateAnimal: function(sprite, event){
-   console.log('animate animal');
-}
-};
+newAnimalMovement.to({x: this.game.world.centerX}, 1000);
+newAnimalMovement.start();
 
+var currentAnimalMovement = this.game.add.tween(this.currentAnimal);
+currentAnimalMovement.to({x: endX},1000);
+currentAnimalMovement.start();
+
+this.currentAnimal = newAnimal;
+}
+  
+};
+animateAnimal: function(sprite, event){
+   console.log('animate animal');
+};
 game.state.add('GameState', GameState);
 game.state.start('GameState');
 
+var game = new Phaser.Game(640, 360, Phaser.AUTO);
 
 
